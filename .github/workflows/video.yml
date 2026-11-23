@@ -1,0 +1,36 @@
+name: Make video
+
+on:
+  workflow_dispatch:
+    inputs:
+      voice_speed:
+        description: "Voice speed (1.0 = normal)"
+        default: "1.16"
+  push:
+    paths:
+      - "story.txt"
+      - "scenes.txt"
+      - "images/**"
+      - "voice/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install ffmpeg and Kurdish font
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg fonts-noto-core
+
+      - name: Build video
+        env:
+          VOICE_SPEED: ${{ github.event.inputs.voice_speed || '1.16' }}
+        run: python3 build.py
+
+      - name: Upload video
+        uses: actions/upload-artifact@v4
+        with:
+          name: video
+          path: output.mp4
