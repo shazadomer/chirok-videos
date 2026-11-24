@@ -1,0 +1,28 @@
+name: Voice test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - name: Generate test voices
+        run: bash voicetest/run.sh
+      - name: Save results to the voice-test branch
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git checkout -b voice-test
+          git add -f voicetest/out
+          git commit -m "Voice test results"
+          git push -f origin voice-test
