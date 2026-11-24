@@ -1,0 +1,42 @@
++ python3 infer_studio-male.py
+/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Input text:
+منداڵەکانم، وەرن دانیشن... ئەمشەو چیرۆکی هەولێرتان بۆ دەگێڕمەوە. لە ناوەڕاستی شاردا، قەڵاکەی لەسەر گردێکی بەرز وەستاوە، وەک تاجێک بەسەر سەری شارەوە.
+
+Normalized/G2P input:
+mindałekanim , werin danîşin ... ʔemşew çîrokî hewlêrtan bo degêřmewe . le naweřastî şarda , qełakey leser girdêkî berz westawe , wek tacêk beser serî şarewe .
+
+Prompt transcription:
+beyanî zû , lexew hestam , çûme germaweke , seruřîşim taşîw dûşêkim wergirt . heta le germaweke hatme derewe , çayekey leser ʔagirêkî kiz le dêm danabû
+
+Normalized/G2P prompt transcription:
+beyanî zû , lexew hestam , çûme germaweke , seruřîşim taşîw dûşêkim wergirt . heta le germaweke hatme derewe , çayekey leser ʔagirêkî kiz le dêm danabû
+
+Loading vocoder...
+Download Vocos from huggingface charactr/vocos-mel-24khz
+Loading model: model-studio-male.pt
+
+vocab :  vocab.txt
+token :  custom
+model :  model-studio-male.pt 
+
+Converting audio...
+Using custom reference text...
+
+ref_text   beyanî zû , lexew hestam , çûme germaweke , seruřîşim taşîw dûşêkim wergirt . heta le germaweke hatme derewe , çayekey leser ʔagirêkî kiz le dêm danabû. 
+
+Synthesizing...
+gen_text 0 mindałekanim , werin danîşin ... ʔemşew çîrokî hewlêrtan bo degêřmewe . le naweřastî şarda , qełakey leser girdêkî berz westawe ,
+gen_text 1 wek tacêk beser serî şarewe .
+
+
+Generating audio in 2 batches...
+  0%|          | 0/2 [00:00<?, ?it/s] 50%|█████     | 1/2 [06:43<06:43, 403.16s/it]100%|██████████| 2/2 [06:43<00:00, 201.58s/it]
+
+Saved wav: output-studio-male.wav
+
+real	7m12.794s
+user	21m49.974s
+sys	0m57.985s
